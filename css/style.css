@@ -3347,6 +3347,16 @@ h6 {
           text-align: left;
           margin-top: 20px; } }
 
+.font-bold-black {
+  font-weight: bold;
+  color: black;
+}
+
+ul.dropdown-menu {
+  width: max-content!important;
+  cursor: pointer!important;
+}
+
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
