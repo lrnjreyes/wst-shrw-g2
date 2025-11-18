@@ -30,6 +30,25 @@
     <header class="header_area">
       <div class="main_menu">
 
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+              <form class="d-flex justify-content-between" method="" action="">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="search_input"
+                  placeholder="Search Here"
+                />
+                <button type="submit" class="btn"></button>
+                <span
+                  class="ti-close"
+                  id="close_search"
+                  title="Close Search"
+                ></span>
+              </form>
+            </div>
+          </div>
+
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,7 +109,7 @@
                         <a class="nav-link" href="../tips/exam-preparation.html">Exam Preparation</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="../tips/motivation-and-mindset.html">Motivation & Mindeset</a>
+                        <a class="nav-link" href="../tips/motivation-and-mindset.html">Motivation & Mindset</a>
                       </li>
                     </ul>
                 </li>
@@ -100,11 +119,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Contact</a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                   <a href="#" class="nav-link search" id="search">
                     <i class="ti-search"></i>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </div>
           </div>
@@ -307,6 +326,71 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         }
       });
     </script>
+
+    <!-- Add Function Search -->
+    <script>
+        $(function () {
+          $('#search').on('click', function(e){ e.preventDefault(); $('#search_input_box'); $('#search_input').focus(); });
+          $('#close_search').on('click', function(){ $('#search_input_box'); });
+      
+          const map = [
+            { 
+              keywords: ['time management', 'time-management', 'time'], 
+              url: 'time-management.html' 
+            },
+            { 
+              keywords: ['exam preparation', 'exam-preparation', 'exam'], 
+              url: 'exam-preparation.html' 
+            },
+            { 
+              keywords: ['focus & concentration', 'focus and concentration', 'focus', 'concentration'], 
+              url: 'focus-and-concentration.html' 
+            },
+            { 
+              keywords: ['how to use this page', 'how-to-use-this-page', 'how to use', 'guide'], 
+              url: 'how-to-use-this-page.html' 
+            },
+            { 
+              keywords: ['memory & retention', 'memory and retention', 'memory', 'retention'], 
+              url: 'memory-and-retention.html' 
+            },
+            { 
+              keywords: ['motivation & mindset', 'motivation and mindset', 'motivation', 'mindset'], 
+              url: 'motivation-and-mindset.html' 
+            }
+          ];
+      
+          function findUrlForQuery(q){
+            if(!q) return null;
+            q = q.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+            for(const m of map){
+              for(const k of m.keywords){
+                if(q === k || q.includes(k) || k.includes(q)) return m.url;
+              }
+            }
+            return null;
+          }
+      
+          // handle form submit or Enter
+          $('#search_input').closest('form').on('submit', function(e){
+            e.preventDefault();
+            const q = $('#search_input').val().trim();
+            const url = findUrlForQuery(q);
+            if(url){
+              window.location.href = url;
+            } else {
+              alert('No direct page found. Try different keywords.');
+            }
+          });
+      
+          $('#search_input').on('keydown', function(e){
+            if(e.key === 'Enter'){
+              e.preventDefault();
+              $(this).closest('form').trigger('submit');
+            }
+          });
+        });
+      </script>
 
   </body>
 </html>
