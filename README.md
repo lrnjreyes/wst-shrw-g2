@@ -8,6 +8,8 @@ Live Preview: https://lrnjreyes.github.io/wst-shrw-g2/
 Test Case Documentation:
 https://docs.google.com/spreadsheets/d/1cwRbk9Ky6PFoPXbKtYQCoackM8FtePcRc-vUmZ5Mp0I/edit?usp=sharing
 
+Study Habit Resources Walkthrough: https://drive.google.com/file/d/17yhryxyFI-oUbDHv02KDdz_Rps8DpGkt/view?usp=drive_link
+
 **TA Updates Summary**
 1. UI and Responsive Fixes
 Fixed mobile responsive layout on the Home section.
